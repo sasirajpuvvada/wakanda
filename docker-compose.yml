@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  web:
+    container_name: wakanda_be
+    image: wakanda_backend
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+  postgres:
+    container_name: postgres_db
+    image: postgres:15.1
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=wakanda123
+      - POSTGRES_DB=wakanda
+    ports:
+      - 5432:5432
+    volumes: 
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+    driver: local
