@@ -1,8 +1,12 @@
 # wakanda
 
+
 install docker
+
 clone the wakanda repo
+
 go to repo and type these commands
+
 
 1) docker-compose -f docker-compose.yml -d 
 
