@@ -12,3 +12,11 @@ def TheModelView(request):
         data = {"key1": "value1", "key2": "value2"}
         json_object = json.dumps(data, indent=3)
         return HttpResponse(json_object)
+
+@csrf_exempt
+def Languages(request):
+
+    if (request.method == "GET"):
+        lang_file = open("core/languages.json").read()
+        lang_json = json.loads(lang_file)
+        return JsonResponse(lang_json)
